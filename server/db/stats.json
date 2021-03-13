@@ -1,0 +1,17 @@
+[
+    {
+        "product": "Ноутбук",
+        "status": "change",
+        "data": "Sat Mar 13 2021 18:26:10"
+    },
+    {
+        "product": "Ноутбук",
+        "status": "remove",
+        "data": "Sat Mar 13 2021 18:26:11"
+    },
+    {
+        "product": "Геймпад",
+        "status": "add",
+        "data": "Sat Mar 13 2021 18:26:12"
+    }
+]
