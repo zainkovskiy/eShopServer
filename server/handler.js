@@ -1,5 +1,6 @@
 const fs = require('fs');
 const cart = require('./cart');
+const dateFormat = require('dateformat');
 
 const actions = {
     add: cart.add,
@@ -20,6 +21,21 @@ const handler = (req, res, action, file) => {
                     res.send('{"result": 1}');
                 }
             })
+        }
+    });
+    fs.readFile('./server/db/stats.json', 'utf-8', (err, data) => {
+        if (err){
+            console.log(err);
+        } else {
+            const time = new Date();
+            const stat = JSON.parse(data);
+            const newStat = { product: `${req.body.product_name}`, status: `${action}`, data: `${dateFormat(time)}`};
+            stat.push(newStat);
+            fs.writeFile('./server/db/stats.json', JSON.stringify(stat, null, 4), (err) => {
+                if (err){
+                    console.log(err);
+                }
+            });
         }
     });
 };
